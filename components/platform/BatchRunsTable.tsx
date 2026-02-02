@@ -13,7 +13,7 @@ type Row = {
 export default function BatchRunsTable({ rows }: { rows: Row[] }) {
     return (
         <div className="rounded-2x1 border p-4 text-black">
-            <div className="mb-3 text-sm font-semibold">Batches</div>
+            <div className="mb-3 text-3xl font-semibold">Batches</div>
 
             <div className="grid grid-cols-5 gap-2 text-sm font-medium opacity-70">
                 <div>Batch</div>

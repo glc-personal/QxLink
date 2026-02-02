@@ -63,12 +63,12 @@ export default function BatchRun({
                     style={{ gridTemplateColumns: "5% 60% 20% 15%" }}
                 >
                     {/* Batch */}
-                    <div className="text-center text-3xl font-semibold text-black whitespace-nowrap">
+                    <div className="text-center text-3xl font-bold text-black whitespace-nowrap">
                         {batch}
                     </div>
 
                     {/* Run (left) */}
-                    <div className="min-w-0 text-3xl font-medium text-black truncate whitespace-nowrap">
+                    <div className="min-w-0 text-3xl font-normal text-black truncate whitespace-nowrap">
                         {runDisplay ? (
                             runId ? (
                                 <TooltipProvider delayDuration={150}>
@@ -93,12 +93,12 @@ export default function BatchRun({
                     </div>
 
                     {/* Status (centered column) */}
-                    <div className="text-center text-3xl font-medium tracking-wide text-black whitespace-nowrap">
+                    <div className="text-center text-3xl font-light tracking-wide text-black whitespace-nowrap">
                         {status}
                     </div>
 
                     {/* ETA (centered column) */}
-                    <div className="text-center text-3xl font-medium tabular-nums text-black whitespace-nowrap">
+                    <div className="text-center text-3xl font-light tabular-nums text-black whitespace-nowrap">
                         {estimatedTimeRemaining ?? "00:00:00"}
                     </div>
                 </div>
