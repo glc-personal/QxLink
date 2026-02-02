@@ -20,6 +20,36 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Project Structure and Organization
+### Folder and File Conventions
+Top-level folders are used to organize your application's code and static assets.
+Top-level files are used to configure your application, manage dependencies, 
+run proxy, integrate monitoring tools, and define environment variables.
+- `/app`: App Router
+- `/pages`: Pages Router
+- `/public`: Static assets to be served
+- `/components`: Reusable UI components used across the application.
+- `next.config.js`: Configuration files for Next.js
+- `package.json`: Project dependencies and scripts
+- `.env`: Environment variables (should not be tracked by version control)
+- `.env.local`: local environment variables (should not be tracked by version control)
+
+### Routing Files
+Add `page` to expose a route, `layout` for shared UI such as header, nav, or 
+footer, `loading` for skeletons, `error` for error boundaries, and `route` for APIs.
+
+### Nested Routes
+Folders define URL segments. Nesting folders nests segments. 
+Layouts at any level wrap their child segments. A route becomes public 
+when a `page` or `route` file exists.
+
+Path	URL pattern	Notes
+- `app/layout.tsx`	—	Root layout wraps all routes
+- `app/blog/layout.tsx`	—	Wraps /blog and descendants
+- `app/page.tsx` -> `/`	Public route
+- `app/blog/page.tsx` -> `/blog`	Public route
+- `app/blog/authors/page.tsx` -> `/blog/authors`	Public route
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
