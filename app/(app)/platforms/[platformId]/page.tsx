@@ -1,4 +1,4 @@
-import {HomeIcon} from "lucide-react";
+import {Cuboid} from "lucide-react";
 import PlatformBanner from "@/components/platform/PlatformBanner";
 import BatchRunsTable from "@/components/platform/BatchRunsTable";
 import ReagentCartridge from "@/components/inventory/ReagentCartridge";
@@ -17,13 +17,13 @@ export default async function PlatformPage({ params }: PageProps) {
             customName: "Ariel",
             platformModel: "QxM",
             serialNumber: "24601",
-            icon: HomeIcon,
+            icon: Cuboid,
         },
         batches: [
-            { batch: "A", runId: "AJUD-9232-HJ", runName: "Size Selection Male", progress: 0.76, status: "Running", estimatedTimeRemaining: "00:10:34" },
-            { batch: "B", runId: "KIDJ-8933-KS", runName: "Proteinase-K Test", progress: 0, status: "Ready", estimatedTimeRemaining: "02:15:00" },
-            { batch: "C", runId: "", runName: "", progress: 0, status: "Idle", estimatedTimeRemaining: "00:00:00" },
-            { batch: "D", runId: "LPOD-0932-LL", runName: "ICP Test Run", progress: 1, status: "Complete", estimatedTimeRemaining: "00:00:00" },
+            { batch: "A", runId: "AJUD-9232-HJ", runName: "Size Selection Male", progress: 0.76, status: "Running", estimatedTimeRemaining: "00:10:34", username: "glc-biorad" },
+            { batch: "B", runId: "KIDJ-8933-KS", runName: "Proteinase-K Test", progress: 0, status: "Ready", estimatedTimeRemaining: "02:15:00", username: "hm-biorad" },
+            { batch: "C", runId: "", runName: "", progress: 0, status: "Idle", estimatedTimeRemaining: "00:00:00", username: "" },
+            { batch: "D", runId: "LPOD-0932-LL", runName: "ICP Test Run", progress: 1, status: "Complete", estimatedTimeRemaining: "00:00:00", username: "" },
         ],
         analytics: {
             // series to plot
@@ -34,13 +34,15 @@ export default async function PlatformPage({ params }: PageProps) {
     };
 
     return (
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col">
             <PlatformBanner
                 customName={data.platform.customName}
                 platformModel={data.platform.platformModel}
                 serialNumber={data.platform.serialNumber}
             />
 
+            <div className="p-4 text-md font-bold text-black">Batches</div>
+            <hr className="" />
             <BatchRunsTable
                 rows={data.batches}
             />

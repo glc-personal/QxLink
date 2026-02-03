@@ -20,6 +20,7 @@ type BatchRunProps = {
     batch: "A" | "B" | "C" | "D" | string;
     runId: string | null;
     runName: string | null;
+    username: string | null;
     progress: number; // 0..1
     status: BatchRunStatus;
     estimatedTimeRemaining: string | null;
@@ -44,6 +45,7 @@ export default function BatchRun({
                                      batch,
                                      runId,
                                      runName,
+                                     username,
                                      progress,
                                      status,
                                      estimatedTimeRemaining,
@@ -59,16 +61,16 @@ export default function BatchRun({
             {/* Top row: 5% / 60% / 20% / 15% */}
             <div className="overflow-x-auto">
                 <div
-                    className="grid items-center px-6 py-6 gap-4 min-w-[900px]"
+                    className="grid items-center px-2 py-2 gap-2 min-w-[900px]"
                     style={{ gridTemplateColumns: "5% 60% 20% 15%" }}
                 >
                     {/* Batch */}
-                    <div className="text-center text-3xl font-bold text-black whitespace-nowrap">
+                    <div className="text-center text-md font-bold text-black whitespace-nowrap">
                         {batch}
                     </div>
 
                     {/* Run (left) */}
-                    <div className="min-w-0 text-3xl font-normal text-black truncate whitespace-nowrap">
+                    <div className="min-w-0 text-md font-normal text-black truncate whitespace-nowrap">
                         {runDisplay ? (
                             runId ? (
                                 <TooltipProvider delayDuration={150}>
@@ -88,17 +90,17 @@ export default function BatchRun({
                                 <span>{runDisplay}</span>
                             )
                         ) : (
-                            <span className="opacity-50">—</span>
+                            <span className="opacity-50"></span>
                         )}
                     </div>
 
                     {/* Status (centered column) */}
-                    <div className="text-center text-3xl font-light tracking-wide text-black whitespace-nowrap">
+                    <div className="text-center text-md font-light tracking-wide text-black whitespace-nowrap">
                         {status}
                     </div>
 
                     {/* ETA (centered column) */}
-                    <div className="text-center text-3xl font-light tabular-nums text-black whitespace-nowrap">
+                    <div className="text-center text-md font-light tabular-nums text-black whitespace-nowrap">
                         {estimatedTimeRemaining ?? "00:00:00"}
                     </div>
                 </div>
@@ -109,7 +111,7 @@ export default function BatchRun({
                 value={progress}
                 progressClassName={done}
                 remainingClassName={remaining}
-                heightClassName="h-6"
+                heightClassName="h-3"
                 className="border-t border-black/30"
             />
         </div>
